@@ -10,7 +10,7 @@ const EthereumAddressChecker: React.FC = () => {
 
   useEffect(() => {
     async function fetchAddresses() {
-      const response = await fetch('/addresses.csv');
+      const response = await fetch('https://pub-751197b9aa06424dbed3f45a040dab77.r2.dev/addresses.csv'); // Replace with your actual CSV URL
       const reader = response.body?.getReader();
       const result = await reader?.read();
       const decoder = new TextDecoder('utf-8');
@@ -43,26 +43,27 @@ const EthereumAddressChecker: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-    <Helmet>
+      <Helmet>
         <title>LayerZero Sybil Checker</title>
-	<link rel="shortcut icon" href="https://layerzero.network/favicon.ico"></link>
+        <link rel="icon" href="https://layerzero.network/favicon.ico" />
       </Helmet>
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Check LayerZero Sybil Address</h1>
-        <input
-          type="text"
-          value={inputAddress}
-          onChange={handleInputChange}
-          placeholder="Enter Ethereum address"
-	              className="w-[300px] h-[30px] p-[5px] mr-[10px] border border-gray-300 rounded"
-        />
-        
-	<button
-          onClick={handleCheckAddress}
-          className="w-full bg-blue-500 text-white p-3 rounded hover:bg-blue-600 transition duration-200"
-        >
-          Check Address
-        </button>
+        <h1 className="text-2xl font-bold mb-6 text-center">Check Ethereum Address</h1>
+        <div className="flex items-center justify-center">
+          <input
+            type="text"
+            value={inputAddress}
+            onChange={handleInputChange}
+            placeholder="Enter Ethereum address"
+            className="w-[300px] h-[30px] p-[5px] mr-[10px] border border-gray-300 rounded"
+          />
+          <button
+            onClick={handleCheckAddress}
+            className="bg-blue-500 text-white p-3 rounded hover:bg-blue-600 transition duration-200"
+          >
+            Check Address
+          </button>
+        </div>
         {message && (
           <p className="mt-4 text-center text-lg">
             {message}
