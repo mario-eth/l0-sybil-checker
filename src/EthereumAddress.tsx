@@ -10,7 +10,7 @@ const EthereumAddressChecker: React.FC = () => {
 
   useEffect(() => {
     async function fetchAddresses() {
-      const response = await fetch('https://pub-751197b9aa06424dbed3f45a040dab77.r2.dev/addresses.csv'); // Replace with your actual CSV URL
+      const response = await fetch('https://l0.soldeer.xyz/addresses.csv'); // Replace with your actual CSV URL
       const reader = response.body?.getReader();
       const result = await reader?.read();
       const decoder = new TextDecoder('utf-8');
